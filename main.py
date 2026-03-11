@@ -1,32 +1,116 @@
+from time import time
+
+import multiDictionary
 import spellchecker
 
 sc = spellchecker.SpellChecker()
 
+
 while(True):
     sc.printMenu()
 
-    txtIn = input()
-    # Add input control here!
+    numeromenu=input("Scegli la lingua:")
 
-    if int(txtIn) == 1:
+
+    if int(numeromenu)== 1:
+        listaita =[]
+        with open("itaita.txt", "r", encoding="utf-8") as file:
+            contenuto = file.read()
+            parole = contenuto.split("\n")
+            for i in parole:
+                listaita.append(i)
+        parolescorrette=""
+
         print("Inserisci la tua frase in Italiano\n")
-        txtIn = input()
-        sc.handleSentence(txtIn,"italian")
-        continue
+        fraseit = input()
+        fraseita=fraseit.lower()
+        chars = "\\`*_{}[]()>#+-.!$%^;,=_~"
+        for c in chars:
+            fraseita = fraseita.replace(c, "")
+        paroledaverificare=fraseita.split(" ")
+        print(f"metodo con contains")
+        for parola in paroledaverificare:
+            if listaita.__contains__(parola):
+                pass
+            else:
+                parolescorrette=parolescorrette+parola+"\n"
+        print(parolescorrette)
+        print(time())
+        print(f"="*60)
+        print(f"metodo con ricerca lineare")
+        risultatolineare = multiDictionary.MultiDictionary.searchwordlinear(listaita, fraseita)
+        print(risultatolineare)
+        print(time())
+        print(f"=" * 60)
+        print(f"metodo con ricerca dicotomica")
+        risultatodicotomico=multiDictionary.MultiDictionary.searchworddicotomic(listaita,fraseita)
+        print(risultatodicotomico)
+        break
 
-    if int(txtIn) == 2:
+    if int(numeromenu) == 2:
+        listaingl= []
+        with open("English.txt", "r", encoding="utf-8") as file:
+            contenuto = file.read()
+            parole = contenuto.split("\n")
+            for i in parole:
+                listaingl.append(i)
+        parolescorrette = ""
+
         print("Inserisci la tua frase in Inglese\n")
-        txtIn = input()
-        sc.handleSentence(txtIn,"english")
-        continue
+        fraseingle = input()
+        fraseinglese=fraseingle.lower()
+        chars = "\\`*_{}[]()>#+-.!$%^;,=_~"
+        for c in chars:
+            fraseinglese = fraseinglese.replace(c, "")
+        paroledaverificare = fraseinglese.split(" ")
+        print(f"metodo con contains")
+        for parola in paroledaverificare:
+            if listaingl.__contains__(parola):
+                pass
+            else:
+                parolescorrette = parolescorrette + parola + "\n"
+        print(parolescorrette)
+        print(time())
+        print(f"=" * 60)
+        print(f"metodo con ricerca lineare")
+        risultatolineare= multiDictionary.MultiDictionary.searchwordlinear(listaingl, fraseinglese)
+        print(risultatolineare)
+        print(time())
+        print(f"=" * 60)
+        break
+    if int(numeromenu) == 3:
+        listaspagnolo = []
+        with open("Spanish.txt", "r", encoding="utf-8") as file:
+            contenuto = file.read()
+            parole = contenuto.split("\n")
+            for i in parole:
+                listaspagnolo.append(i)
+        parolescorrette = ""
 
-    if int(txtIn) == 3:
         print("Inserisci la tua frase in Spagnolo\n")
-        txtIn = input()
-        sc.handleSentence(txtIn,"spanish")
-        continue
+        frasespa = input()
+        frasespagnolo=frasespa.lower()
+        chars = "\\`*_{}[]()>#+-.!$%^;,=_~"
+        for c in chars:
+            frasespagnolo = frasespagnolo.replace(c, "")
+        paroledaverificare = frasespagnolo.split(" ")
+        print(f"metodo con contains")
+        for parola in paroledaverificare:
+            if listaspagnolo.__contains__(parola):
+                pass
+            else:
+                parolescorrette = parolescorrette + parola + "\n"
+        print(parolescorrette)
+        print(time())
+        print(f"=" * 60)
+        print(f"metodo con ricerca lineare")
+        risultatolineare = multiDictionary.MultiDictionary.searchwordlinear(listaspagnolo, frasespagnolo)
+        print(risultatolineare)
+        print(time())
+        print(f"=" * 60)
+        break
 
-    if int(txtIn) == 4:
+    if int(numeromenu) == 4:
         break
 
 
