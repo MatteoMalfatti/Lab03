@@ -14,7 +14,7 @@ while(True):
 
     if int(numeromenu)== 1:
         listaita =[]
-        with open("itaita.txt", "r", encoding="utf-8") as file:
+        with open("Italian.txt", "r", encoding="utf-8") as file:
             contenuto = file.read()
             parole = contenuto.split("\n")
             for i in parole:
@@ -45,6 +45,7 @@ while(True):
         print(f"metodo con ricerca dicotomica")
         risultatodicotomico=multiDictionary.MultiDictionary.searchworddicotomic(listaita,fraseita)
         print(risultatodicotomico)
+        print(time())
         break
 
     if int(numeromenu) == 2:
@@ -77,6 +78,10 @@ while(True):
         print(risultatolineare)
         print(time())
         print(f"=" * 60)
+        print(f"metodo con ricerca dicotomica")
+        risultatodicotomico = multiDictionary.MultiDictionary.searchworddicotomic(listaingl, fraseinglese)
+        print(risultatodicotomico)
+        print(time())
         break
     if int(numeromenu) == 3:
         listaspagnolo = []
@@ -108,6 +113,10 @@ while(True):
         print(risultatolineare)
         print(time())
         print(f"=" * 60)
+        print(f"metodo con ricerca dicotomica")
+        risultatodicotomico = multiDictionary.MultiDictionary.searchworddicotomic(listaspagnolo, frasespagnolo)
+        print(risultatodicotomico)
+        print(time())
         break
 
     if int(numeromenu) == 4:
